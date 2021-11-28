@@ -1,21 +1,18 @@
 package Models;
-
-import Abstract.Answer;
+import java.util.ArrayList;
 
 public class ExamModel {
     private int totalQuestions;
-    private QuestionModel[] questions;
-    private int totalAnswers;
-    private Answer[] answers;
+    private ArrayList<QuestionModel> questions;
+    private ArrayList<StudentModel> students;
 
-    public ExamModel(int totalQuestions, QuestionModel[] questions, int totalAnswers, Answer[] answers) {
+    public ExamModel(int totalQuestions, ArrayList<QuestionModel> questions, ArrayList<StudentModel> students) {
         this.totalQuestions = totalQuestions;
         this.questions = questions;
-        this.totalAnswers = totalAnswers;
-        this.answers = answers;
+        this.students = students;
     }
 
-    public ExamModel(){}
+    public ExamModel() {}
 
     public int getTotalQuestions() {
         return totalQuestions;
@@ -25,27 +22,20 @@ public class ExamModel {
         this.totalQuestions = totalQuestions;
     }
 
-    public QuestionModel[] getQuestions() {
+    public ArrayList<QuestionModel> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(QuestionModel[] questions) {
+    public void setQuestions(ArrayList<QuestionModel> questions) {
         this.questions = questions;
     }
 
-    public int getTotalAnswers() {
-        return totalAnswers;
+    public ArrayList<StudentModel> getStudents() {
+        return students;
     }
 
-    public void setTotalAnswers(int totalAnswers) {
-        this.totalAnswers = totalAnswers;
+    public void setStudents(ArrayList<StudentModel> students) {
+        this.students = students;
     }
 
-    public Answer[] getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(Answer[] answers) {
-        this.answers = answers;
-    }
 }

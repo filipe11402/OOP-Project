@@ -4,12 +4,11 @@ import Models.ClosedAnswerModel;
 import Models.OpenAnswerModel;
 import Models.QuestionModel;
 import Models.StudentModel;
-
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class FileParser {
@@ -23,13 +22,9 @@ public class FileParser {
         }
     }
 
-    public String getTotalQuestions(){
-        return this.fileScanner.nextLine();
-    }
+    public int getTotal(){ return Integer.parseInt(this.fileScanner.nextLine()); }
 
-    private String getQuestionString(){
-        return fileScanner.nextLine();
-    }
+    private String getQuestionString(){ return fileScanner.nextLine(); }
 
     public ArrayList<QuestionModel> getQuestions(int totalQuestions){
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
@@ -65,7 +60,7 @@ public class FileParser {
 
                     var closedAnswerStrings = this.getAnswers(false);
                     for (int i = 0; i < 4; i++){
-                        closedAnswer[i] = new ClosedAnswerModel(Float.parseFloat(closedAnswerStrings[i].split(" ")[2]));
+                        closedAnswer[i] = new ClosedAnswerModel(closedAnswerStrings[i].split(" ")[0], Float.parseFloat(closedAnswerStrings[i].split(" ")[2]));
                     }
 
                     returnData.setAnswers(closedAnswer);
@@ -79,7 +74,6 @@ public class FileParser {
 
         return questions;
     }
-
 
     private String[] getAnswers(boolean isOpen){
         String[] answers = isOpen ? new String[1] : new String[4];
@@ -97,33 +91,28 @@ public class FileParser {
         return answers;
     }
 
-    public StudentModel[] getStudents(){ return null; }
+    public ArrayList<StudentModel> getStudents(int totalStudents, int totalQuestions){
+        ArrayList<StudentModel> students = new ArrayList<StudentModel>();
 
-   // public QuestionModel[] getQuestions(){
+        int studentsCounter = 0;
 
-    //}
+        while (studentsCounter < totalStudents){
+            HashMap<Integer, String> answersList = new HashMap<Integer, String>();
+            StudentModel student = new StudentModel();
+            var studentName = fileScanner.nextLine();
+            student.setStudentName(studentName);
 
-  /*  private String ReadFile(int startLine, int endLine){
+            for (int i = 0; i < totalQuestions; i++){
+                String answers = fileScanner.nextLine();
+                String[] splittedFileAnswers = answers.split(" ");
+                answersList.put(Integer.parseInt(splittedFileAnswers[0]), splittedFileAnswers[1]);
+            }
 
-    }
-
-     QuestionModel GetQuestion(){
-        if(ExamUtils.FileExists("path")){
-            return null;
+            student.setAnswers(answersList);
+            students.add(student);
+            studentsCounter += 1;
         }
 
-
+        return students;
     }
-      try {
-        File myObj = new File("filename.txt");
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            System.out.println(data);
-        }
-        myReader.close();
-    } catch (FileNotFoundException e) {
-        System.out.println("An error occurred.");
-        e.printStackTrace();
-    }*/
 }

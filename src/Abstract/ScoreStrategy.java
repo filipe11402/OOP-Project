@@ -1,9 +1,6 @@
 package Abstract;
-
-import Models.QuestionModel;
-
-import java.util.HashMap;
+import Models.ScoreBoardModel;
 
 public interface ScoreStrategy {
-    double calculateScore(HashMap<Integer, String>[] answers, QuestionModel questions);
+    ScoreBoardModel getScores();
 }
