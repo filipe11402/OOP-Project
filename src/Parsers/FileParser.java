@@ -14,11 +14,11 @@ import java.util.Scanner;
 public class FileParser {
     private Scanner fileScanner;
 
-    public FileParser(File file) throws FileNotFoundException{
+    public FileParser(File file){
         try {
             this.fileScanner = new Scanner(file);
         } catch (FileNotFoundException e) {
-            System.out.println("There is no file in that path");
+            System.out.println("File not found");
         }
     }
 

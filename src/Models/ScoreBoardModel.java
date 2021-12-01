@@ -1,19 +1,16 @@
 package Models;
 
+import java.util.ArrayList;
+
 public class ScoreBoardModel {
+    private ArrayList<StudentModel> students;
 
-    private StudentModel[] students;
-
-    public ScoreBoardModel(StudentModel[] students) {
+    public ScoreBoardModel(ArrayList<StudentModel> students) {
         this.students = students;
     }
 
-    public StudentModel[] getStudents() {
-        return students;
-    }
+    public void sortScores(){}
 
-    public void setStudents(StudentModel[] students) {
-        this.students = students;
-    }
+
 
 }

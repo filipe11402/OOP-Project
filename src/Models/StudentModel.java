@@ -32,6 +32,8 @@ public class StudentModel {
         return totalScore;
     }
 
+    public void increaseTotalScore(double valueToIncrease) { this.totalScore = this.totalScore + valueToIncrease; }
+
     public void setTotalScore(double totalScore) {
         this.totalScore = totalScore;
     }

@@ -1,7 +1,10 @@
 package Strategies;
+import Abstract.Answer;
 import Abstract.ScoreStrategy;
-import Models.ExamModel;
-import Models.ScoreBoardModel;
+import Models.*;
+
+import java.util.ArrayList;
+import java.util.*;
 
 public class ExamScoreStrategy implements ScoreStrategy {
     private ExamModel exam;
@@ -11,11 +14,52 @@ public class ExamScoreStrategy implements ScoreStrategy {
     }
 
     public ScoreBoardModel getScores(){
-        //To validate the question answer
-        //we need to compare the question answer that is the right one, by looking at its quotation with the answer that the student gave to that answer
-        //after that we just make calculations
-        //if it´s an open question we just check if the student answer it's not -, if it isnt just add 1
-        //to be implemented
-        return null;
+        ArrayList<QuestionModel> questions = this.exam.getQuestions();
+        List<String> rightClosedAnswers = new ArrayList<String>();
+        List<Float> rightOpenAnswers = new ArrayList<Float>();
+
+        int rightAnswersCounter = 0;
+        int rightClosedAnswerCounter = 0;
+
+          questions.forEach((question) -> {
+             for (Answer answer: question.getAnswers()) {
+                 if (answer instanceof ClosedAnswerModel) {
+                     ClosedAnswerModel test = (ClosedAnswerModel) answer;
+                     if(test.getQuotation() == 1.0){
+                         rightClosedAnswers.add(test.getIndent());
+                     }
+                 }
+                 if(answer instanceof OpenAnswerModel){
+                     OpenAnswerModel test = (OpenAnswerModel) answer;
+                         rightOpenAnswers.add(test.getQuotation());
+                 }
+             }});
+
+            for (QuestionModel question: this.exam.getQuestions()) {
+                for (StudentModel student: this.exam.getStudents()) {
+                    rightClosedAnswerCounter = 0;
+                    rightAnswersCounter = 0;
+
+                    if(question.isOpen()){
+                        Float answer = student.getAnswers().get(question.getQuestionNumber()).equals("-") ? 0 : Float.parseFloat(student.getAnswers().get(question.getQuestionNumber()));
+                       // Boolean exists = answer.equals(rightOpenAnswers.get(rightAnswersCounter));
+                        student.increaseTotalScore(answer);
+
+                        rightAnswersCounter++;
+                    }
+
+                    if(!question.isOpen()){
+                        String answer = student.getAnswers().get(question.getQuestionNumber());
+
+                        Boolean exists = answer.equals(rightClosedAnswers.get(rightClosedAnswerCounter));
+
+                        student.increaseTotalScore(answer.equals("-") ? 0 : exists ? 1 : -0.25);
+
+                        rightClosedAnswerCounter++;
+                    }
+                }
+            }
+
+        return new ScoreBoardModel(this.exam.getStudents());
     }
 }
