@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
-        var fileParser = new FileParser(new File("c://Users/Dimi/Desktop/JavaProjects/POO/src/Formulario.txt"));
+        var fileParser = new FileParser(new File("C://Users/filip/Desktop/OOP-Project/src/Formulario.txt"));
 
         int totalQuestions = fileParser.getTotal();
 
@@ -23,12 +23,11 @@ public class Main {
 
         ScoreBoardModel studentScoreBoard = exam2.getScores();
 
-        for (StudentModel student: exam.getStudents()) {
-            System.out.println(student.getStudentName() + student.getTotalScore());
-        }
-
         studentScoreBoard.sortScores();
 
+        for (StudentModel student: exam.getStudents()) {
+            System.out.println(student.getStudentName() + " " + student.getTotalScore());
+        }
         //studentScoreBoard.showStudents();
     }
 }

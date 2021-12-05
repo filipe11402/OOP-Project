@@ -31,7 +31,7 @@ public class ExamScoreStrategy implements ScoreStrategy {
                  }
                  if(answer instanceof OpenAnswerModel){
                      OpenAnswerModel test = (OpenAnswerModel) answer;
-                         rightOpenAnswers.add(test.getQuotation());
+                     rightOpenAnswers.add(test.getQuotation());
                  }
              }});
 
@@ -42,7 +42,6 @@ public class ExamScoreStrategy implements ScoreStrategy {
 
                     if(question.isOpen()){
                         Float answer = student.getAnswers().get(question.getQuestionNumber()).equals("-") ? 0 : Float.parseFloat(student.getAnswers().get(question.getQuestionNumber()));
-                       // Boolean exists = answer.equals(rightOpenAnswers.get(rightAnswersCounter));
                         student.increaseTotalScore(answer);
 
                         rightAnswersCounter++;

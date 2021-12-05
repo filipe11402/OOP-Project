@@ -37,7 +37,4 @@ public class StudentModel {
     public void setTotalScore(double totalScore) {
         this.totalScore = totalScore;
     }
-
-
-
 }
