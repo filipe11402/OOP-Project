@@ -8,7 +8,7 @@ import java.nio.file.FileSystems;
 
 public class Main {
     public static void main(String[] args){
-        var fileParser = new FileParser(new File(FileSystems.getDefault().getPath("src").toAbsolutePath().toString() + "\\Formulario.txt"));
+        var fileParser = new FileParser(new File(FileSystems.getDefault().getPath("src").toAbsolutePath() + "\\Formulario.txt"));
 
         int totalQuestions = fileParser.getTotal();
 
