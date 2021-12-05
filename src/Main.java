@@ -19,7 +19,7 @@ public class Main {
 
         ExamScoreStrategy exam2 = new ExamScoreStrategy(exam);
 
-        ScoreBoardModel studentScoreBoard = exam2.getScores();
+        ScoreBoardModel studentScoreBoard = exam2.calculateScores();
 
         studentScoreBoard.sortScores();
 

@@ -12,7 +12,7 @@ public class ExamScoreStrategy implements ScoreStrategy {
         this.exam = exam;
     }
 
-    public ScoreBoardModel getScores(){
+    public ScoreBoardModel calculateScores(){
         ArrayList<QuestionModel> questions = this.exam.getQuestions();
         List<String> rightClosedAnswers = new ArrayList<String>();
         List<Float> rightOpenAnswers = new ArrayList<Float>();
