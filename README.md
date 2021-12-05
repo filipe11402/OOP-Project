@@ -17,3 +17,7 @@ Para a resolução a este problema começamos por identificar a estrutura do exa
 | ------ | ------ |
 FileTest | https://github.com/filipe11402/OOP-Project/blob/main/src/Tests/FileTest.java
 FileParserTests  | https://github.com/filipe11402/OOP-Project/blob/main/src/Tests/FileParserTests.java
+
+### Conclusão
+Para finalizar, este projeto, permitiu aos programadores, implementar uma nova metodologia de desenvolvimento, o TDD.
+Resolvendo o problema proposto da melhor maneira possível, a nosso ver.
