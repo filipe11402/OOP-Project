@@ -16,7 +16,7 @@ C 10 -0.25
 D 15 -0.25
 4 A "Prove que 15*3 = 15+15+15"
 2
-6
+5
 Amilcar
 1 B
 2 C
@@ -41,9 +41,4 @@ Eurico
 1 C
 2 A
 3 -
-4 -
-Joana
-1 B
-2 B
-3 B
 4 -

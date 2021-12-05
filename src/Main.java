@@ -3,14 +3,12 @@ import Models.ScoreBoardModel;
 import Models.StudentModel;
 import Parsers.FileParser;
 import Strategies.ExamScoreStrategy;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.nio.file.FileSystems;
 
 public class Main {
     public static void main(String[] args){
-        var fileParser = new FileParser(new File("C://Users/filip/Desktop/OOP-Project/src/Formulario.txt"));
+        var fileParser = new FileParser(new File(FileSystems.getDefault().getPath("src").toAbsolutePath().toString() + "\\Formulario.txt"));
 
         int totalQuestions = fileParser.getTotal();
 
@@ -28,6 +26,5 @@ public class Main {
         for (StudentModel student: exam.getStudents()) {
             System.out.println(student.getStudentName() + " " + student.getTotalScore());
         }
-        //studentScoreBoard.showStudents();
     }
 }

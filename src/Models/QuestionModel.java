@@ -1,5 +1,4 @@
 package Models;
-
 import Abstract.Answer;
 
 public class QuestionModel {
@@ -7,7 +6,6 @@ public class QuestionModel {
     private Answer[] answers;
     private boolean isOpen;
     private int questionNumber;
-
 
     public QuestionModel(String question, Answer[] answers, boolean isOpen, int questionNumber) {
         this.question = question;

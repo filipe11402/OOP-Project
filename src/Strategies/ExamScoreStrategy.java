@@ -2,7 +2,6 @@ package Strategies;
 import Abstract.Answer;
 import Abstract.ScoreStrategy;
 import Models.*;
-
 import java.util.ArrayList;
 import java.util.*;
 
@@ -24,14 +23,14 @@ public class ExamScoreStrategy implements ScoreStrategy {
           questions.forEach((question) -> {
              for (Answer answer: question.getAnswers()) {
                  if (answer instanceof ClosedAnswerModel) {
-                     ClosedAnswerModel test = (ClosedAnswerModel) answer;
-                     if(test.getQuotation() == 1.0){
-                         rightClosedAnswers.add(test.getIndent());
+                     ClosedAnswerModel closedAnswer = (ClosedAnswerModel) answer;
+                     if(closedAnswer.getQuotation() == 1.0){
+                         rightClosedAnswers.add(closedAnswer.getIndent());
                      }
                  }
                  if(answer instanceof OpenAnswerModel){
-                     OpenAnswerModel test = (OpenAnswerModel) answer;
-                     rightOpenAnswers.add(test.getQuotation());
+                     OpenAnswerModel openAnswer = (OpenAnswerModel) answer;
+                     rightOpenAnswers.add(openAnswer.getQuotation());
                  }
              }});
 
