@@ -17,9 +17,9 @@ public class Main {
                                        fileParser.getStudents(fileParser.getTotal(), totalQuestions)
         );
 
-        ExamScoreStrategy exam2 = new ExamScoreStrategy(exam);
+        ExamScoreStrategy examScore = new ExamScoreStrategy(exam);
 
-        ScoreBoardModel studentScoreBoard = exam2.getScores();
+        ScoreBoardModel studentScoreBoard = examScore.calculateScores();
 
         studentScoreBoard.sortScores();
 
