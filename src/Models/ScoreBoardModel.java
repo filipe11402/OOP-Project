@@ -20,4 +20,17 @@ public class ScoreBoardModel {
     public void sortScores(){
         Collections.sort(this.students, new StudentScoreComparator());
     }
+
+    /**
+     *
+     * @param exam
+     * This method prints the students.
+     */
+    public void showStudents( ExamModel exam)
+    {
+        for (StudentModel student: exam.getStudents()) {
+            System.out.println(student.getStudentName() + " " + student.getTotalScore());
+        }
+    }
+
 }

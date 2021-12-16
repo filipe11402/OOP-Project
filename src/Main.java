@@ -3,28 +3,39 @@ import Models.ScoreBoardModel;
 import Models.StudentModel;
 import Parsers.FileParser;
 import Strategies.ExamScoreStrategy;
+import Utils.ExamUtils;
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.nio.file.FileSystems;
 
 public class Main {
     public static void main(String[] args){
-        var fileParser = new FileParser(new File(FileSystems.getDefault().getPath("src").toAbsolutePath() + "\\Formulario.txt"));
+        try {
+            boolean fileExists = ExamUtils.FileExists(FileSystems.getDefault().getPath("src").toAbsolutePath() + "\\Formulario.txt");
 
-        int totalQuestions = fileParser.getTotal();
+            if(!fileExists){ throw new FileNotFoundException("Exam doesnt exist"); }
 
-        ExamModel exam = new ExamModel(totalQuestions,
-                                       fileParser.getQuestions(totalQuestions),
-                                       fileParser.getStudents(fileParser.getTotal(), totalQuestions)
-        );
+            var fileParser = new FileParser(new File(FileSystems.getDefault().getPath("src").toAbsolutePath() + "\\Formulario.txt"));
 
-        ExamScoreStrategy examScore = new ExamScoreStrategy(exam);
+            int totalQuestions = fileParser.getTotal();
 
-        ScoreBoardModel studentScoreBoard = examScore.calculateScores();
+            ExamModel exam = new ExamModel(totalQuestions,
+                    fileParser.getQuestions(totalQuestions),
+                    fileParser.getStudents(fileParser.getTotal(), totalQuestions)
+            );
 
-        studentScoreBoard.sortScores();
+            ExamScoreStrategy examScore = new ExamScoreStrategy(exam);
 
-        for (StudentModel student: exam.getStudents()) {
-            System.out.println(student.getStudentName() + " " + student.getTotalScore());
+            ScoreBoardModel studentScoreBoard = examScore.calculateScores();
+
+            studentScoreBoard.sortScores();
+
+            studentScoreBoard.showStudents(exam);
         }
+        catch(FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
