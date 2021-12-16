@@ -8,10 +8,19 @@ import java.util.*;
 public class ExamScoreStrategy implements ScoreStrategy {
     private ExamModel exam;
 
+    /**
+     *
+     * @param exam
+     */
     public ExamScoreStrategy(ExamModel exam){
         this.exam = exam;
     }
 
+    /**
+     *
+     * @return ScoreBoardModel
+     * This method will return us a ScoreBoardModel with the calculated scores of all the students.
+     */
     public ScoreBoardModel calculateScores(){
         ArrayList<QuestionModel> questions = this.exam.getQuestions();
         List<String> rightClosedAnswers = new ArrayList<String>();

@@ -14,6 +14,10 @@ import java.util.Scanner;
 public class FileParser {
     private Scanner fileScanner;
 
+    /**
+     *
+     * @param file
+     */
     public FileParser(File file){
         try {
             this.fileScanner = new Scanner(file);
@@ -22,10 +26,21 @@ public class FileParser {
         }
     }
 
+    /**
+     *
+     * @return Integer
+     * This method allows us to get the number os questions and the number of students.
+     */
     public int getTotal(){ return Integer.parseInt(this.fileScanner.nextLine()); }
 
     private String getQuestionString(){ return fileScanner.nextLine(); }
 
+    /**
+     *
+     * @param totalQuestions
+     * @return ArrayList<QuestionModel>
+     * This method will give us all the questions from our exam model.
+     */
     public ArrayList<QuestionModel> getQuestions(int totalQuestions){
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
 
@@ -75,6 +90,12 @@ public class FileParser {
         return questions;
     }
 
+    /**
+     *
+     * @param isOpen
+     * @return String[]
+     * This method allows us to get all the answers.
+     */
     private String[] getAnswers(boolean isOpen){
         String[] answers = isOpen ? new String[1] : new String[4];
 
@@ -91,6 +112,13 @@ public class FileParser {
         return answers;
     }
 
+    /**
+     *
+     * @param totalStudents
+     * @param totalQuestions
+     * @return ArrayList<StudentModel>
+     * This method allows us to get all the students from our exam model.
+     */
     public ArrayList<StudentModel> getStudents(int totalStudents, int totalQuestions){
         ArrayList<StudentModel> students = new ArrayList<StudentModel>();
 

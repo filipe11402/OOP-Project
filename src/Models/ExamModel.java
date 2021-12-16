@@ -6,6 +6,12 @@ public class ExamModel {
     private ArrayList<QuestionModel> questions;
     private ArrayList<StudentModel> students;
 
+    /**
+     *
+     * @param totalQuestions
+     * @param questions
+     * @param students
+     */
     public ExamModel(int totalQuestions, ArrayList<QuestionModel> questions, ArrayList<StudentModel> students) {
         this.totalQuestions = totalQuestions;
         this.questions = questions;

@@ -1,7 +1,11 @@
 package Abstract;
 
+
 public abstract class Answer {
     public float quotation;
+    /**
+     * @param quotation
+     */
 
     public Answer(float quotation) {
         this.quotation = quotation;

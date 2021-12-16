@@ -7,12 +7,20 @@ public class QuestionModel {
     private boolean isOpen;
     private int questionNumber;
 
+    /**
+     *
+     * @param question
+     * @param answers
+     * @param isOpen
+     * @param questionNumber
+     */
     public QuestionModel(String question, Answer[] answers, boolean isOpen, int questionNumber) {
         this.question = question;
         this.answers = answers;
         this.isOpen = isOpen;
         this.questionNumber = questionNumber;
     }
+
 
     public QuestionModel(){}
 

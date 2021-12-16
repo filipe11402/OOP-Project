@@ -6,6 +6,12 @@ public class StudentModel {
     private HashMap<Integer, String> answers;
     private double totalScore;
 
+    /**
+     *
+     * @param studentName
+     * @param answers
+     * @param totalScore
+     */
     public StudentModel(String studentName, HashMap<Integer, String> answers, double totalScore) {
         this.studentName = studentName;
         this.answers = answers;
@@ -32,6 +38,11 @@ public class StudentModel {
         return totalScore;
     }
 
+    /**
+     *
+     * @param valueToIncrease
+     * This method will increase student score value based on the parameter that is given
+     */
     public void increaseTotalScore(double valueToIncrease) { this.totalScore = this.totalScore + valueToIncrease; }
 
     public void setTotalScore(double totalScore) {
